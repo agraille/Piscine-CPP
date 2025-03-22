@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 08:00:52 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/19 09:26:21 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:02:16 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	main(int argc, char **argv)
 		return 0;
 	}
 	for (int i = 1; argv[i]; i++)
-	{
 		for (int j = 0; argv[i][j]; j++)
 			std::cout << (char)std::toupper(argv[i][j]);
-	}
 	std::cout << "\n";
 	return 0;
 }
