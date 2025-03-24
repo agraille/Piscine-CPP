@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:03:37 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/24 16:13:41 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:59:52 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,16 @@ Contact::~Contact(){
 
 static void no_empty_line(const std::string &message, std::string &variable) {
     std::cout << message;
-    while (std::getline(std::cin, variable) && variable.empty())
-		std::cout << "Error: " << message << " cannot be empty. Try again: ";
+    while (1)
+	{
+		std::getline(std::cin, variable);
+		if (std::cin.eof())
+			exit(0);
+		if (variable.empty())
+			std::cout << "Error: " << message << " cannot be empty. Try again: ";
+		else
+			break;
+	}
 }
 
 void Contact::setContact() {

@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:03:47 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/24 16:19:58 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:56:18 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void PhoneBook::search_contact()
 		if (std::cin.eof())
 			exit(0);
 		std::cout << "Enter an existing index:\n";
-		int number = input[0] + '0';
+		int number = input[0] - '0';
 		if (input.length() != 1 || number < 0 || number > 7)
 			continue;
-		if (number <= contact_count && number >= 0 && number <= 7)
+		if (number < contact_count && number >= 0 && number <= 7)
 		{
 			if (number <= contact_count)
 				contacts[number].getDisplayIndex();

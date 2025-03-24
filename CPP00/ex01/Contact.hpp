@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:18:33 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/24 15:43:04 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:57:53 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iomanip> 
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 
 class	Contact
