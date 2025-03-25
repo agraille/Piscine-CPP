@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:03:47 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/24 20:56:18 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/25 08:36:44 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ PhoneBook::~PhoneBook(){
 	std::cout << "PhoneBook is destroy" << std::endl;
 }
 
-void PhoneBook::add_contact()
-{
+void PhoneBook::add_contact(){
 	if (index == 8)
 		index = 0;
 	contacts[index].setContact();
@@ -29,8 +28,7 @@ void PhoneBook::add_contact()
 	contact_count++;
 }
 
-void PhoneBook::search_contact()
-{
+void PhoneBook::search_contact(){
 	std::string input;
 	
 	if (contact_count == 0){
