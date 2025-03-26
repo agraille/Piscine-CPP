@@ -6,16 +6,16 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/25 13:11:07 by agraille          #+#    #+#              #
-#    Updated: 2025/03/25 13:11:29 by agraille         ###   ########.fr        #
+#    Updated: 2025/03/26 09:00:05 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all re fclean clean
 
-NAME = 
+NAME = zombie
 CC=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = Account.cpp tests.cpp
+SRC = newZombie.cpp  main.cpp randomChump.cpp Zombie.cpp 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile 
+$(OBJ_DIR)/%.o: %.cpp Makefile Zombie.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 

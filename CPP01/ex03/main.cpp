@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:13:00 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 09:48:19 by agraille         ###   ########.fr       */
+/*   Created: 2025/03/26 14:32:03 by agraille          #+#    #+#             */
+/*   Updated: 2025/03/26 15:36:21 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
-class	Zombie{
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void 	announce(void) const;
-	private:
-		std::string name;
-};
-
-Zombie* newZombie( std::string name );
-void 	randomChump( std::string name );
+int main(){
+	{
+		Weapon club = Weapon("shotgun");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("desert eagle");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("grenade");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("botlle of water");
+		jim.attack();
+	}
+return 0;
+}

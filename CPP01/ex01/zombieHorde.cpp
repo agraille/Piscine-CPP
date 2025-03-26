@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:13:00 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 09:48:19 by agraille         ###   ########.fr       */
+/*   Created: 2025/03/26 10:00:21 by agraille          #+#    #+#             */
+/*   Updated: 2025/03/26 13:56:12 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
-class	Zombie{
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void 	announce(void) const;
-	private:
-		std::string name;
-};
+Zombie* zombieHorde( int N, std::string name ){
+	if (N < 1){
+		std::cout << "Set minimun 1 zombie...bye\n";
+		exit(EXIT_FAILURE);
+	}
+	Zombie* Horde = new Zombie[N];
 
-Zombie* newZombie( std::string name );
-void 	randomChump( std::string name );
+	for (int i = 0; i < N; i++)
+		Horde[i].setName(name);
+	return Horde;
+}

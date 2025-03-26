@@ -6,7 +6,12 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:12:55 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/25 13:12:56 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/26 09:39:32 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+void	randomChump( std::string name ){
+	Zombie	temp(name);
+}

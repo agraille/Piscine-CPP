@@ -5,21 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 13:13:00 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 09:48:19 by agraille         ###   ########.fr       */
+/*   Created: 2025/03/26 09:59:58 by agraille          #+#    #+#             */
+/*   Updated: 2025/03/26 13:55:29 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 
-class	Zombie{
+class Zombie{
 	public:
-		Zombie(std::string name);
+		Zombie(void);
+		void	setName(std::string name);
+		void	announce() const;
 		~Zombie();
-		void 	announce(void) const;
 	private:
 		std::string name;
 };
 
-Zombie* newZombie( std::string name );
-void 	randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
