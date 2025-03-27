@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:32:03 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 15:36:21 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/27 09:54:47 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(){
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
-		club.setType("botlle of water");
+		club.setType("bottle of water");
 		jim.attack();
 	}
 return 0;

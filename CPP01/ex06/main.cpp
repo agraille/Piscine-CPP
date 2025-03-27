@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 14:31:58 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/27 08:53:14 by agraille         ###   ########.fr       */
+/*   Created: 2025/03/27 11:21:16 by agraille          #+#    #+#             */
+/*   Updated: 2025/03/27 12:29:20 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#include "Harl.hpp"
+#include <iostream>
 
-#include "Weapon.hpp"
-#include "iostream"
+int	main(int argc, char **argv){
+	Harl	harl;
 
-class	HumanA{
-
-	public:
-		HumanA(std::string name, Weapon& weapon);
-		~HumanA();
-		void	attack() const;
-	private:
-		std::string name;
-		const Weapon&	   weapon;
-};
-
-#endif
+	if (argc != 2)
+	{
+		std::cout << "Need only one argument\n";
+		return 1;
+	}
+	std::string	s1 = argv[1];
+    harl.complain(s1);
+	return 0;
+}

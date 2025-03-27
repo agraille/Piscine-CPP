@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:32:05 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 15:35:33 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/27 09:28:40 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Weapon::~Weapon(){
 }
 
 const std::string&	Weapon::getType() const{
-	return type;
+	return this->type;
 }
 
 void Weapon::setType(std::string type){

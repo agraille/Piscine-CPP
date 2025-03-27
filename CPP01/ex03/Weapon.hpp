@@ -6,9 +6,12 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:32:07 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/26 15:32:46 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/27 08:53:25 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
 #include <iostream>
 
@@ -22,3 +25,5 @@ class	Weapon{
 	private:
 		std::string type;
 };
+
+#endif

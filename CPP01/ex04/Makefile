@@ -6,16 +6,16 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 14:30:23 by agraille          #+#    #+#              #
-#    Updated: 2025/03/27 09:55:56 by agraille         ###   ########.fr        #
+#    Updated: 2025/03/27 10:41:02 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all re fclean clean
 
-NAME = humanAttack
+NAME = replace
 CC=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC = main.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile HumanB.hpp HumanA.hpp Weapon.hpp
+$(OBJ_DIR)/%.o: %.cpp Makefile
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
