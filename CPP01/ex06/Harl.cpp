@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:21:13 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/27 12:34:31 by agraille         ###   ########.fr       */
+/*   Updated: 2025/03/31 08:04:59 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,10 @@ void Harl::complain(std::string level){
 	switch (enumlvl) {
         case DEBUG:
             this->debug();
-            this->info();
-            this->warning();
-            this->error();
-			break; 
         case INFO:
             this->info();
-            this->warning();
-            this->error();
-			break; 
         case WARNING:
             this->warning();
-            this->error();
-			break; 
         case ERROR:
             this->error();
 			break; 
