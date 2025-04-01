@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:32:32 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/31 13:31:44 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:36:44 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 int	main(){
 	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	
-	c = a;
-	std::cout << a.getRawBits() << "\n";
-	std::cout << b.getRawBits() << "\n";
-	std::cout << c.getRawBits() << "\n";
-	return 0;
+	Fixed const b( 10 );
+	Fixed const c( 44.42f );
+	Fixed const d( b );
+
+	a = Fixed( 1234.4321f );
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+return 0;
 }
