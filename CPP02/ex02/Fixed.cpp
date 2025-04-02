@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:32:30 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/01 22:49:08 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:39:28 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 const int Fixed::fractionalBits = 8;
 
 Fixed::Fixed() : nbr(0){
-	std::cout << "Default constructor called\n";
+	// std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const Fixed& copy){
-	std::cout << "Copy constructor called\n";
+	// std::cout << "Copy constructor called\n";
 	*this = copy;
 }
 
 Fixed::Fixed(const int& value){
-	std::cout << "Int constructor called\n";
+	// std::cout << "Int constructor called\n";
 	nbr = value << fractionalBits;
 }
 
 Fixed::Fixed(const float& value){
-	std::cout << "Float constructor called\n";
+	// std::cout << "Float constructor called\n";
 	nbr = roundf(value * (1 << fractionalBits)); 
 }
 
 Fixed::~Fixed() {
-    std::cout << "Destructor called\n";
+    // std::cout << "Destructor called\n";
 }
 
 float Fixed::toFloat(void) const {
@@ -46,14 +46,14 @@ int Fixed::toInt(void) const {
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-	std::cout << "Copy assignment operator called\n";
+	// std::cout << "Copy assignment operator called\n";
     if (this != &other)
 	   this->nbr = other.getRawBits();
     return *this;
 }
 
 int Fixed::getRawBits(void) const {
-    std::cout << "getRawBits member function called\n";
+    // std::cout << "getRawBits member function called\n";
     return this->nbr;
 }
 

@@ -6,22 +6,36 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:32:32 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/01 22:54:59 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/03 00:06:05 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include "Point.hpp"
 
 int	main(){
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	
-	std::cout << (a < b) << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
+	const Point a(0.0f, 0.0f);
+	const Point b(5.0f, 0.0);
+	const Point c(0.0f, 5.0f);
+	const Point p(2.0f, 2.0f);
+
+	if (bsp(a, b, c, p))
+    	std::cout << "OK : Point inside\n";
+	else
+    	std::cout << "FAIL : Point outside\n";
+	return 0;
 }
+
+/*
+        1  0  0  0  0  1  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  P  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        1  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+        0  0  0  0  0  0  0  0  0  0  0
+*/
