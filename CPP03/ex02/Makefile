@@ -6,16 +6,16 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/28 08:51:05 by agraille          #+#    #+#              #
-#    Updated: 2025/04/04 12:19:11 by agraille         ###   ########.fr        #
+#    Updated: 2025/04/04 12:14:41 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all re fclean clean
 
-NAME = diamond
+NAME = fragtrap
 CC=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+$(OBJ_DIR)/%.o: %.cpp Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
