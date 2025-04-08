@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 21:33:29 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/07 21:34:09 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:20:31 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ WrongAnimal::WrongAnimal() : type("WrongAnimal"){
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other){
     std::cout << "WrongAnimal copy constructor called\n";
-    *this = other;
+    this->type = other.type;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other){

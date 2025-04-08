@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:35:31 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/07 21:28:40 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:21:38 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Animal::Animal() : type("Animal"){
 
 Animal::Animal(const Animal& other){
     std::cout << "Animal copy constructor called\n";
-    *this = other;
+    this->type = other.type;
 }
 
 Animal& Animal::operator=(const Animal& other){

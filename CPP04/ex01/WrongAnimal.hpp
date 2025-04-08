@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRNGANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
 #define WRONGANIMAL_HPP
 
 #include <iostream>
