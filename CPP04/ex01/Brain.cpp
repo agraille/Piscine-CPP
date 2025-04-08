@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:01:06 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/08 10:16:38 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:15:54 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ Brain::~Brain(){
 
 Brain&	Brain::operator=(const Brain& other){
     std::cout << "Brain assignment operator called\n";
-	if (this != &other)
-		*this = other;
+	if (this != &other){
+		for (int i = 0; i < 100; ++i)
+        	ideas[i] = other.ideas[i];
+	}
 	return *this;
 }

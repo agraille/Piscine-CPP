@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:19:01 by agraille          #+#    #+#             */
-/*   Updated: 2025/03/24 15:43:18 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:47:08 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PhoneBook
 		void add_contact();
 		void search_contact();
 		~PhoneBook();
+
 	private:
 		Contact contacts[8];
 		unsigned short	index;

@@ -6,9 +6,12 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:01:14 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/08 10:15:37 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:31:46 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include "Animal.hpp"
 
@@ -24,3 +27,5 @@ class Brain{
 	private:
 		std::string	ideas[100];
 };
+
+#endif

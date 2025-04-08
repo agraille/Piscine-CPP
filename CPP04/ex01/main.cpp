@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:34:39 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/07 21:43:18 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:35:11 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,17 @@
 #include "WrongCat.hpp"
 
 int main(){
-	const Animal* meta = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
+	const Animal* animals[10];
 	
-	std::cout << dog->getType() << " " << std::endl;
-	std::cout << cat->getType() << " " << std::endl;
-	
-	cat->makeSound();
-	dog->makeSound();
-	meta->makeSound();
-
-	delete meta;
-	delete cat;
-	delete dog;
-	
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* wrongcat = new WrongCat();
-	
-	std::cout << wrongcat->getType() << " " << std::endl;
-	
-	wrongcat->makeSound();
-	wrong->makeSound();
+	for (int i = 0; i < 10 / 2; ++i){
+        animals[i] = new Dog();
+	}
+		
+    for (int i = 10 / 2; i < 10; ++i){
+        animals[i] = new Cat();
+	}	
+    for (int i = 0; i < 10; ++i){
+        delete animals[i];
+	}
 	return 0;
 }
