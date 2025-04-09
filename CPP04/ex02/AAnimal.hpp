@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 20:36:42 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/09 11:04:57 by agraille         ###   ########.fr       */
+/*   Created: 2025/04/07 20:35:29 by agraille          #+#    #+#             */
+/*   Updated: 2025/04/09 10:15:11 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include <sstream>
 
-class Dog : public Animal {
+class	AAnimal{
+
 	public:
-		Dog();
-		Dog(const Dog& other);
-		~Dog();
+		AAnimal();
+		AAnimal(const AAnimal& copy);
+		virtual ~AAnimal() = 0;
 
-		Dog& operator=(const Dog& other);
+		AAnimal& operator=(const AAnimal& other);
 
-		void makeSound() const;
-		void setIdea() const;
-		const std::string&	getIdeas(int index) const;
-	private:
-		Brain *brain;
+		virtual	void makeSound() const;
+		std::string	 getType() const;
+		virtual void setIdea() const;
+		virtual const std::string&	getIdeas(int index) const;
+	protected:
+		std::string type;
 };
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,39 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal() : type("Animal"){
-    std::cout << "Animal constructor called\n";
+AAnimal::AAnimal() : type("AAnimal"){
+    std::cout << "AAnimal constructor called\n";
 }
 
-Animal::Animal(const Animal& other){
-    std::cout << "Animal copy constructor called\n";
+AAnimal::AAnimal(const AAnimal& other){
+    std::cout << "AAnimal copy constructor called\n";
     this->type = other.type;
 }
 
-Animal& Animal::operator=(const Animal& other){
-    std::cout << "Animal assignment operator called\n";
+AAnimal& AAnimal::operator=(const AAnimal& other){
+    std::cout << "AAnimal assignment operator called\n";
     if (this != &other)
         type = other.type;
     return *this;
 }
 
-Animal::~Animal() {
-    std::cout << "Animal destructor called\n";
+AAnimal::~AAnimal() {
+    std::cout << "AAnimal destructor called\n";
 }
 
-std::string Animal::getType() const{
+std::string AAnimal::getType() const{
     return type;
 }
 
-void Animal::makeSound() const{
-    std::cout << "* animal sound *\n";
+void AAnimal::makeSound() const{
+    std::cout << "* Aanimal sound *\n";
 }
 
-const std::string&	Animal::getIdeas(int index) const{
+const std::string&	AAnimal::getIdeas(int index) const{
 	(void)index;
 	return type;
 }
 
-void Animal::setIdea()const {}
+void AAnimal::setIdea()const {}

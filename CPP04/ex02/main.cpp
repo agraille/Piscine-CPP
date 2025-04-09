@@ -6,34 +6,40 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:34:39 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/09 09:54:32 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:05:56 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 
-#define TOTALANIMALS 4
+#define TOTALAANIMALS 4
 
 int main(){
-	const Animal* animals[TOTALANIMALS];
+	// const AAnimal* Aanimals[TOTALAANIMALS];
 	
-	for (int i = 0; i < TOTALANIMALS / 2; ++i){
-        animals[i] = new Dog();
-		animals[i]->setIdea();
-		std::cout << animals[i]->getIdeas(i) << std::endl;
-	}
+	// AAnimal Aanimal;
+	// AAnimal* Aanimal2 = new AAnimal();
 
-    for (int i = TOTALANIMALS / 2; i < TOTALANIMALS; ++i){
-        animals[i] = new Cat();
-		animals[i]->setIdea();
-		std::cout << animals[i]->getIdeas(i) << std::endl;
-	}
+	Cat cat;
+	Dog dog;
 
-    for (int i = 0; i < TOTALANIMALS; ++i){
+	// Aanimal = Aanimal2;
+	// for (int i = 0; i < TOTALAANIMALS / 2; ++i){
+    //     Aanimals[i] = new Dog();
+	// 	Aanimals[i]->setIdea();
+	// 	std::cout << Aanimals[i]->getIdeas(i) << std::endl;
+	// }
+
+    // for (int i = TOTALAANIMALS / 2; i < TOTALAANIMALS; ++i){
+    //     Aanimals[i] = new Cat();
+	// 	Aanimals[i]->setIdea();
+	// 	std::cout << Aanimals[i]->getIdeas(i) << std::endl;
+	// }
+
+    // for (int i = 0; i < TOTALAANIMALS; ++i){
 		
-        delete animals[i];
-	}
+    //     delete Aanimals[i];
+	// }
 	return 0;
 }

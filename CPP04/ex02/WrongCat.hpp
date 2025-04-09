@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 20:36:42 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/09 11:04:57 by agraille         ###   ########.fr       */
+/*   Created: 2025/04/07 21:37:44 by agraille          #+#    #+#             */
+/*   Updated: 2025/04/07 21:37:54 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal {
+class WrongCat : public WrongAnimal {
 	public:
-		Dog();
-		Dog(const Dog& other);
-		~Dog();
+		WrongCat();
+		WrongCat(const WrongCat& other);
+		~WrongCat();
 
-		Dog& operator=(const Dog& other);
+		WrongCat& operator=(const WrongCat& other);
 
-		void makeSound() const;
-		void setIdea() const;
-		const std::string&	getIdeas(int index) const;
-	private:
-		Brain *brain;
+   		void makeSound() const;
 };
 
 #endif
