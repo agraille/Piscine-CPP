@@ -14,14 +14,20 @@ int	main(){
 		std::cout << bis << "\n";
 		jagaan.decrementGrade();
 	}
-	catch(const std::exception& e){
+	catch(const Bureaucrat::GradeTooHighException& e){
+		std::cout << e.what() << "\n";
+	}
+	catch(const Bureaucrat::GradeTooLowException& e){
 		std::cout << e.what() << "\n";
 	}
 	try{
 		Bureaucrat fail("fail", -1);
 		std::cout << fail << "\n";
 	}
-	catch (const std::exception& e){
+	catch(const Bureaucrat::GradeTooHighException& e){
+		std::cout << e.what() << "\n";
+	}
+	catch(const Bureaucrat::GradeTooLowException& e){
 		std::cout << e.what() << "\n";
 	}
 	return 0;
