@@ -33,19 +33,27 @@ const std::string& Bureaucrat::getName() const{
 }
 
 void Bureaucrat::incrementGrade() {
-    if (_grade <= 1) {
+    if (_grade <= 1)
         throw GradeTooHighException();
-    }
     --_grade;
 }
 
 void Bureaucrat::decrementGrade() {
-    if (_grade >= 150) {
+    if (_grade >= 150)
         throw GradeTooLowException();
-    }
     ++_grade;
 }
 
-void Bureaucrat::signForm(Form& form){
+void Bureaucrat::signForm(AForm& form){
 	form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const& form) const{
+    try {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << "\n";
+    }
+    catch (std::exception& e) {
+        std::cout << _name << " couldn’t execute " << form.getName() << " because " << e.what() << "\n";
+    }
 }

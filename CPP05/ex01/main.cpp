@@ -1,18 +1,14 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(){
-	try{
-		Bureaucrat	jagaan("JAGAAN", 150);
-		std::cout << jagaan << std::endl;
-		jagaan.incrementGrade();
-		std::cout << jagaan << std::endl;
-		jagaan.decrementGrade();
-		std::cout << jagaan << std::endl;
-		Bureaucrat	bis("bis", 1);
-		std::cout << bis << "\n";
-		bis = jagaan;
-		std::cout << bis << "\n";
-		jagaan.decrementGrade();
+
+	try {
+		Bureaucrat	bob("bob", 150);
+		Form	A("test", 1, 150);
+		// std::cout << A << "\n";
+		bob.signForm(A);
+
 	}
 	catch(const Bureaucrat::GradeTooHighException& e){
 		std::cout << e.what() << "\n";
@@ -20,14 +16,13 @@ int	main(){
 	catch(const Bureaucrat::GradeTooLowException& e){
 		std::cout << e.what() << "\n";
 	}
-	try{
-		Bureaucrat fail("fail", -1);
-		std::cout << fail << "\n";
-	}
-	catch(const Bureaucrat::GradeTooHighException& e){
+	catch(const Form::GradeTooLowException& e){
 		std::cout << e.what() << "\n";
 	}
-	catch(const Bureaucrat::GradeTooLowException& e){
+	catch(const Form::GradeTooHighException& e){
+		std::cout << e.what() << "\n";
+	}
+	catch(const std::exception& e){
 		std::cout << e.what() << "\n";
 	}
 	return 0;
