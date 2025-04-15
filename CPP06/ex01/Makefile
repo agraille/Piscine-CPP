@@ -6,16 +6,16 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/28 08:51:05 by agraille          #+#    #+#              #
-#    Updated: 2025/04/14 06:39:36 by agraille         ###   ########.fr        #
+#    Updated: 2025/04/15 23:46:11 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all re fclean clean
 
-NAME = Bureaucrat
+NAME = serialize
 CC=c++
-CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp
+CFLAGS=-Wall -Wextra -Werror 
+SRC = main.cpp Serializer.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile
+$(OBJ_DIR)/%.o: %.cpp Makefile Serializer.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
