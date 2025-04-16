@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:32:31 by agraille          #+#    #+#             */
-/*   Updated: 2025/04/07 08:09:34 by agraille         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:42:36 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,40 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class	Fixed{
 	public:
 		Fixed();
+		Fixed(const int& value);
+		Fixed(const float& value);
 		Fixed(const Fixed& copy);
 		~Fixed();
 
 		Fixed& operator=(const Fixed& other);
+		bool operator>(const Fixed& other) const;
+		bool operator<(const Fixed& other) const;
+		bool operator>=(const Fixed& other) const;
+		bool operator<=(const Fixed& other) const;
+		bool operator==(const Fixed& other) const;
+		bool operator!=(const Fixed& other) const;
 
+		Fixed operator+(const Fixed& other) const;
+		Fixed operator-(const Fixed& other) const;
+		Fixed operator*(const Fixed& other) const;
+		Fixed operator/(const Fixed& other) const;
+
+		Fixed& operator++();
+		Fixed operator++(int);
+		Fixed& operator--();
+		Fixed operator--(int);
+
+        static Fixed& 		min(Fixed& a, Fixed& b);
+        static const Fixed& min(const Fixed& a, const Fixed& b);
+        static Fixed& 		max(Fixed& a, Fixed& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
+		float 	toFloat(void) const;
+		int 	toInt(void) const;
 		int		getRawBits(void) const;
 		void 	setRawBits(int const raw);
 
@@ -31,4 +56,7 @@ class	Fixed{
 		static const int fractionalBits;
 	
 };
+
+std::ostream& operator<<(std::ostream& o, const Fixed& fixed);
+
 #endif

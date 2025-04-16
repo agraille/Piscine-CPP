@@ -6,16 +6,16 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/28 08:51:05 by agraille          #+#    #+#              #
-#    Updated: 2025/04/07 08:16:41 by agraille         ###   ########.fr        #
+#    Updated: 2025/04/07 08:13:42 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all re fclean clean
 
-NAME = operator
+NAME = bsp
 CC=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile Fixed.hpp
+$(OBJ_DIR)/%.o: %.cpp Makefile Fixed.hpp Point.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
