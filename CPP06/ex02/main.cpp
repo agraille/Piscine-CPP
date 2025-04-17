@@ -54,3 +54,5 @@ int main() {
     delete obj;
     return 0;
 }
+
+//rtti activ with one virtual method

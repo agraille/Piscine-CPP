@@ -1,9 +1,9 @@
 .PHONY : all re fclean clean
 
-NAME = Bureaucrat
+NAME = mutan
 CC=c++
-CFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Bureaucrat.cpp
+CFLAGS=-Wall -Wextra -Werror
+SRC = main.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile Bureaucrat.hpp
+$(OBJ_DIR)/%.o: %.cpp Makefile MutantStack.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
@@ -36,3 +36,4 @@ fclean :
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
 re : fclean all
+ 
