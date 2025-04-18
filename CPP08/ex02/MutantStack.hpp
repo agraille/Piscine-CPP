@@ -25,6 +25,7 @@ public:
 	using std::stack<T>::pop;
 	using std::stack<T>::top;
 	using std::stack<T>::size;
+
 	iterator begin() {
 	    return this->c.begin();
 	}

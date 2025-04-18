@@ -163,3 +163,9 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
         return a;
     return b;
 }
+
+Fixed Fixed::abs() const {
+    if (this->nbr < 0)
+        return Fixed(-this->toFloat());
+    return Fixed(this->toFloat());
+}

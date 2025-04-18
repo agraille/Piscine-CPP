@@ -17,7 +17,7 @@ int	main(){
 	const Point a(0.0f, 0.0f);
 	const Point b(5.0f, 0.0);
 	const Point c(0.0f, 5.0f);
-	const Point p(2.0f, 2.0f);
+	const Point p(3.0f, 1.0f);
 
 	if (bsp(a, b, c, p))
     	std::cout << "OK : Point inside\n";

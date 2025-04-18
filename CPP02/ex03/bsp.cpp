@@ -26,7 +26,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 
 	if (areaPAB == Fixed(0) || areaPBC == Fixed(0) || areaPCA == Fixed(0))
 		return false;
-	else if (abs(areaPAB.toInt()) + abs(areaPBC.toInt()) + abs(areaPCA.toInt()) == abs(areaABC.toInt()))
+	else if (areaPAB.abs() + areaPBC.abs()  + areaPCA.abs()  == areaABC.abs() )
 		return true;
 	else
 		return false;
