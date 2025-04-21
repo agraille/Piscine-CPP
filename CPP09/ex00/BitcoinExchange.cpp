@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-static int stringToInt(const std::string& str){
+static int stringToInt(STRING_CR str){
 	std::stringstream	key(str);
 		int	result;
 		key >> result;
@@ -9,8 +9,8 @@ static int stringToInt(const std::string& str){
 	return	result;
 }
 
-static bool	check_date(const std::string& line_read){
-	if (line_read[4] != '-' || line_read[7] !=  '-' || line_read[10] != ',' || !isdigit(line_read[11]))
+static bool	check_date(STRING_CR line_read){
+	if (line_read[4] != '-' || line_read[7] !=  '-')
 		return false;
 	short 			years = stringToInt(line_read.substr(0, 4));
 	short 			month = stringToInt(line_read.substr(5, 2));
@@ -22,12 +22,9 @@ static bool	check_date(const std::string& line_read){
 	return true;
 }
 
-static bool	is_valid_data(const std::string& line_read){
-	if (line_read[10] != ',' || !isdigit(line_read[11]) || !check_date(line_read))
-		return false;
-
-	std::string 	value = line_read.substr(11);
+static bool	check_value(STRING_CR value){
 	short			point = 0;
+
 	for (int i = 0; value[i]; i++){
 		if (value[i] != '.' && !isdigit(value[i]))
 			return false;
@@ -39,22 +36,87 @@ static bool	is_valid_data(const std::string& line_read){
 	return true;
 }
 
-bool	addDataToMap(std::ifstream& data){
+static void	check_base(std::map<int, std::string>& dataBase, STRING_CR line_read, STRING_CR value){
+	std::string date_str = line_read.substr(0, 10);
+	std::string clean_date = date_str;
+
+	clean_date.erase(std::remove(clean_date.begin(), clean_date.end(), '-'), clean_date.end());
+	int date_key = stringToInt(clean_date);	
+	std::map<int, std::string>::iterator it = dataBase.lower_bound(date_key);
+	if (it == dataBase.end())
+		--it;
+	else if (it->first != date_key) {
+		if (it != dataBase.begin())
+			--it;
+		else {
+			std::cout << "Error: no earlier date available for " << date_str << "\n";
+			return;
+		}
+	}
+	std::stringstream ss(it->second);
+	float exchange_rate;
+	ss >> exchange_rate;
+
+	std::stringstream vs(value);
+	float input_value;
+	vs >> input_value;	
+
+	float result = input_value * exchange_rate;
+	if (result > 1000000)
+		std::cout << std::fixed << std::setprecision(2);
+	std::cout << date_str << " => " << value << " = " << result << "\n";
+}
+
+static void	check_infile(std::map<int, std::string>& dataBase, std::string input){
+	std::ifstream	infile(input.c_str());
+	if (!infile.is_open()){
+		std::cout << "Cannot open "<< input << "\n";
+		std::exit(1);
+	}
+	std::string	line_read;
+	while(getline(infile, line_read)){
+		if (line_read == "date | value")
+			continue;
+		if (!check_date(line_read) || line_read[10] != ' ' || line_read[11] != '|' \
+			|| line_read[12] != ' '){
+			std::cout << "Error: bad input => " << line_read << "\n";
+			continue;
+		}
+		std::string 	value = line_read.substr(13);
+		if (value[0] == '-'){
+			std::cout << "Error: not a positive number.\n";
+			continue;
+		}
+		if (value.length() > 4){
+			std::cout << "Error: too large a number.\n";
+			continue;
+		}
+		if (check_value(value) == false || value.length() == 0){
+			std::cout << "Error: bad input => " << line_read << "\n";
+			continue;
+		}
+		check_base(dataBase, line_read, value);
+	}
+	infile.close();
+}
+
+bool	addDataToMap(std::ifstream& data, STRING_CR input){
 	std::map<int, std::string>	dataBase;
 	std::string				line_read;
 	getline(data, line_read);
 	if (line_read != "date,exchange_rate")
 		return false;
 	while (getline(data, line_read)){
-		if (is_valid_data(line_read) == false)
+		if (line_read[10] != ',' || !isdigit(line_read[11]) || !check_date(line_read))
+			return false;
+		std::string 	value = line_read.substr(11);
+		if (check_value(value) == false)
 			return false;
 		line_read.erase(std::remove(line_read.begin(), line_read.end(), '-'), line_read.end());
 		int	key = stringToInt(line_read.substr(0, 8));
 		dataBase.insert(std::make_pair(key, line_read.substr(9)));
 	}
-	for (std::map<int, std::string>::iterator it = dataBase.begin(); it != dataBase.end(); ++it) {
-		std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
-	}
 	data.close();
+	check_infile(dataBase, input);
 	return true;
 }

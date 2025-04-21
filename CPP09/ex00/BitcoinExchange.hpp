@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <iomanip>
 
-bool	addDataToMap(std::ifstream& data);
+typedef	const std::string& STRING_CR;
+
+bool	addDataToMap(std::ifstream& data, STRING_CR input);
 
 #endif
