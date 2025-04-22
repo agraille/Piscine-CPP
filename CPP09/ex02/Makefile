@@ -1,9 +1,9 @@
 .PHONY : all re fclean clean
 
-NAME = RPN
+NAME = PmergeMe
 CC=c++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -g3
-SRC = main.cpp RPN.cpp
+CFLAGS=-Wall -Wextra -Werror -std=c++98
+SRC = main.cpp PmergeMe.cpp
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.cpp=%.o))
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)║   Compilation Success! ✅ ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp Makefile RPN.hpp
+$(OBJ_DIR)/%.o: %.cpp Makefile PmergeMe.hpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
