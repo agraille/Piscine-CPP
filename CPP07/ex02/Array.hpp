@@ -31,7 +31,7 @@ class	Array{
 TEMPLATE
 T&	Array<T>::operator[](const unsigned int& i) const{
 	if (i >= _n || i < 0)
-		throw	std::out_of_range("OUT OF nRANGE");
+		throw	std::out_of_range("OUT OF RANGE");
 	return _type[i];
 }
 

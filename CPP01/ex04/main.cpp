@@ -26,6 +26,7 @@ void	replace_file(std::string& filename, std::string& s1, std::string& s2){
 	if (!output.is_open())
 	{
 		std::cout << "Error creating file: " << filename << ".replace" <<std::endl;
+		input.close();
         exit(EXIT_FAILURE);
 	}
 	std::string	line_read;
@@ -51,6 +52,8 @@ int main(int argc, char **argv){
 	std::string filename = argv[1];
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
+	if (s1.length() == 0)
+		return 1;
 	replace_file(filename, s1, s2);
 
 	return 0;
