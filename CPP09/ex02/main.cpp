@@ -32,11 +32,10 @@ int	main (int argc, char **argv){
 			jacob.push_back(str_to_int(argv[i]));
 		}catch (const std::exception& e){
 			std::cout << e.what() << argv[i] << std::endl;
+			return 1;
 		}
 
 	}
-	for (std::vector<int>::iterator it = jacob.begin(); it != jacob.end(); ++it){
-		std::cout << *it << std::endl;
-	}
+	make_pairs(jacob);
 	return 0;
 }
