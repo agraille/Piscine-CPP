@@ -3,7 +3,7 @@
 int main()
 {
 	Span sp = Span(5);
-	Span random(1000);
+	Span random(10000);
 
 	sp.addNumber(6);
 	sp.addNumber(3);
@@ -23,7 +23,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 	try{
-		random.addRandomNumbers(1000);
+		random.addRandomNumbers(10000);
 		std::cout << random.shortestSpan() << "\n";
 		std::cout << random.longestSpan() << "\n";
 	}

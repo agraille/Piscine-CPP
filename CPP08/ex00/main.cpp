@@ -2,9 +2,26 @@
 #include "easyfind.tpp"
 
 int	main(){
-	std::vector<int>	tab1{1, 2, 3, 4, 5};
-	std::deque<int>		tab2{1, 2, 3, 4, 5};
-	std::list<int>		tab3{1, 2, 3, 4, 5};
+	std::vector<int> tab1;
+	tab1.push_back(1);
+	tab1.push_back(2);
+	tab1.push_back(3);
+	tab1.push_back(4);
+	tab1.push_back(5);
+
+	std::deque<int> tab2;
+	tab2.push_back(1);
+	tab2.push_back(2);
+	tab2.push_back(3);
+	tab2.push_back(4);
+	tab2.push_back(5);
+
+	std::list<int> tab3;
+	tab3.push_back(1);
+	tab3.push_back(2);
+	tab3.push_back(3);
+	tab3.push_back(4);
+	tab3.push_back(5);
 
 	try {
         std::vector<int>::iterator it = easyfind(tab1, 5);

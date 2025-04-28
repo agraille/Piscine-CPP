@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <climits>
-#include <random>
+#include <exception>
 
 class Span{
 

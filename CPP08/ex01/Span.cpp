@@ -42,15 +42,13 @@ uint		Span::longestSpan(){
 	if (_v.size() <= 1)
         throw std::runtime_error("Not enough numbers to find a span.");
 	std::sort(_v.begin(), _v.end());
-	return *std::prev(_v.end()) - *_v.begin();
+	return *(_v.end() - 1) - *_v.begin();
 }
 
 void 	Span::addRandomNumbers(uint count){
 	if (_n < count)
 	    throw std::out_of_range("Vector size to small!");
-	std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(INT_MIN, INT_MAX);
+	srand(time(NULL));
 	for (uint i = 0; i < count; ++i)
-		addNumber(dist(gen));
+		addNumber(rand());
 }
