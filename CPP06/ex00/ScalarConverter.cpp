@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include <climits>
 
 void	is_impossible(){
 	std::cout << "Invalid input can't convert, read the subject for example . . .\n";
@@ -30,14 +31,20 @@ static void stringToFloat(const std::string& str){
 	float result;
 	ss >> result;
 	std::cout << "STRING TO FLOAT:\n";
-	int		i = static_cast<int>(result);
-	char	c = static_cast<char>(i);
-	double	d = static_cast<double>(result);
-	std::cout << "int: " << i << "\n";
-	if (i > 31 && i < 127)
-		std::cout << "char: " << c << "\n";
-	else
+	if (result > INT_MAX || result < INT_MIN){
+		std::cout << "int: " << "impossible" << "\n";
 		std::cout << "Character not in the printable ASCII set"<< "\n";
+	}
+	else {
+		int		i = static_cast<int>(result);
+		char	c = static_cast<char>(i);
+		std::cout << "int: " << i << "\n";
+		if (i > 31 && i < 127)
+			std::cout << "char: " << c << "\n";
+		else
+			std::cout << "Character not in the printable ASCII set"<< "\n";
+	}
+	double	d = static_cast<double>(result);
 	std::cout << "float: " << result << "f" << "\n";
 	std::cout << "double: " << d << "\n";
 }
@@ -49,14 +56,20 @@ static void stringToDouble(const std::string& str){
 	if (ss.fail() || !ss.eof())
 		is_impossible();
 	std::cout << "STRING TO DOUBLE:\n";
-	int		i = static_cast<int>(result);
-	char	c = static_cast<char>(i);
-	float	f = static_cast<float>(result);
-	std::cout << "int: " << i << "\n";
-	if (i >= 32 && i < 127)
-		std::cout << "char: " << c << "\n";
-	else
+	if (result > INT_MAX || result < INT_MIN){
+		std::cout << "int: " << "impossible" << "\n";
 		std::cout << "Character not in the printable ASCII set"<< "\n";
+	}
+	else {
+		int		i = static_cast<int>(result);
+		char	c = static_cast<char>(i);
+		std::cout << "int: " << i << "\n";
+		if (i >= 32 && i < 127)
+			std::cout << "char: " << c << "\n";
+		else
+			std::cout << "Character not in the printable ASCII set"<< "\n";
+	}
+	float	f = static_cast<float>(result);
 	std::cout << "float: " <<  f << "f" << "\n";
 	std::cout << "double: " << result << "\n";
 }

@@ -2,7 +2,7 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-#include <typeinfo>
+#include <exception>
 
 Base* generate() {
     std::srand(std::time(0));
@@ -13,34 +13,37 @@ Base* generate() {
 }
 
 void identify(Base* p) {
-    if (dynamic_cast<A*>(p)) std::cout << "A\n";
-    else if (dynamic_cast<B*>(p)) std::cout << "B\n";
-    else if (dynamic_cast<C*>(p)) std::cout << "C\n";
+    if (dynamic_cast<A*>(p))
+		std::cout << "A\n";
+    else if (dynamic_cast<B*>(p))
+		std::cout << "B\n";
+    else if (dynamic_cast<C*>(p))
+		std::cout << "C\n";
 }
 
 void identify(Base& p) {
     try {
-        dynamic_cast<A&>(p);
+        static_cast<void>(dynamic_cast<A&>(p));
         std::cout << "A\n";
         return;
     }
-	catch (std::bad_cast& e){
+	catch (std::exception& e){
 		std::cout << "Convertion A is not OK : " << e.what() << "\n";
 	}
     try {
-        dynamic_cast<B&>(p);
+        static_cast<void>(dynamic_cast<B&>(p));
         std::cout << "B\n";
         return;
     }
-	catch (std::bad_cast& e){
+	catch (std::exception& e){
 		std::cout << "Convertion B is not OK : " << e.what() << "\n";
 	}
     try {
-        dynamic_cast<C&>(p);
+        static_cast<void>(dynamic_cast<C&>(p));
         std::cout << "C\n";
         return;
     }
-	catch (std::bad_cast& e){
+	catch (std::exception& e){
 		std::cout << "Convertion C is not OK : " << e.what() << "\n";
 	}
 }

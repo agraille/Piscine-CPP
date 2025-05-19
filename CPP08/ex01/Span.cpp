@@ -5,7 +5,7 @@ Span::Span(uint n) : _n(n){
 }
 
 Span::Span(const Span& other) : _n(other._n){
-	_v.reserve(other._n);
+	_v = other._v;
 }
 
 Span::~Span(){}
