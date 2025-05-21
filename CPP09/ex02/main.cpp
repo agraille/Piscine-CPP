@@ -22,7 +22,8 @@ int	main (int argc, char **argv){
 		std::cout << "Error: add more arguments\n";
 		return 1;
 	}
-	std::vector<int>	jacob;
+	std::vector<int> jacob;
+	std::deque<int>	 jacob2;
 	for (int i = 1; argv[i]; ++i){
 		if (!check_arg(argv[i])){
 			std::cout << "Invalid value: " << argv[i] << std::endl;
@@ -30,6 +31,7 @@ int	main (int argc, char **argv){
 		}
 		try{
 			jacob.push_back(str_to_int(argv[i]));
+			jacob2.push_back(str_to_int(argv[i]));
 		}catch (const std::exception& e){
 			std::cout << e.what() << argv[i] << std::endl;
 			return 1;
@@ -37,5 +39,6 @@ int	main (int argc, char **argv){
 
 	}
 	make_pairs(jacob);
+	make_pairs(jacob2);
 	return 0;
 }

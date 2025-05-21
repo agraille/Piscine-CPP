@@ -26,37 +26,14 @@ static void stringToInt(const std::string& str){
 	std::cout << "double: " << d << "\n";
 }
 
-static void stringToFloat(const std::string& str){
-	std::stringstream ss(str);
-	float result;
-	ss >> result;
-	std::cout << "STRING TO FLOAT:\n";
-	if (result > INT_MAX || result < INT_MIN){
-		std::cout << "int: " << "impossible" << "\n";
-		std::cout << "Character not in the printable ASCII set"<< "\n";
-	}
-	else {
-		int		i = static_cast<int>(result);
-		char	c = static_cast<char>(i);
-		std::cout << "int: " << i << "\n";
-		if (i > 31 && i < 127)
-			std::cout << "char: " << c << "\n";
-		else
-			std::cout << "Character not in the printable ASCII set"<< "\n";
-	}
-	double	d = static_cast<double>(result);
-	std::cout << "float: " << result << "f" << "\n";
-	std::cout << "double: " << d << "\n";
-}
-
 static void stringToDouble(const std::string& str){
 	std::stringstream ss(str);
 	double result;
 	ss >> result;
-	if (ss.fail() || !ss.eof())
+	if (ss.fail())
 		is_impossible();
 	std::cout << "STRING TO DOUBLE:\n";
-	if (result > INT_MAX || result < INT_MIN){
+	if (result > 2147483647 || result < -2147483648){
 		std::cout << "int: " << "impossible" << "\n";
 		std::cout << "Character not in the printable ASCII set"<< "\n";
 	}
@@ -90,7 +67,7 @@ static void stringToChar(const std::string& str){
 static void	parse_type(const std::string& param){
 	unsigned short	point = 0;
 	unsigned short	k = 0;
-	
+
 	for(int i = 0; param[i]; ++i){
 		if (param[i] == '+' || param[i] == '-')
 			continue;
@@ -102,8 +79,8 @@ static void	parse_type(const std::string& param){
 	if (point > 1 || k > 2)
 		is_impossible();
 	if (param[param.length() - 1] == 'f' && point == 1)
-		stringToFloat(param);
-	else if (point == 1)
+		stringToDouble(param);
+	else if (point == 1 && k == 1)
 		stringToDouble(param);
 	else if (param.length() == 1 && isalpha(param[0]))
 		stringToChar(param);

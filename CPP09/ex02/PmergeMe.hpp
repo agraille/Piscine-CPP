@@ -16,7 +16,7 @@ std::vector<int> generateJacobsthalNumbers(int limit) {
     std::vector<int> jacobsthal;
     jacobsthal.push_back(0);
     jacobsthal.push_back(1);
-    
+
     int i = 2;
     while (true) {
         int next = jacobsthal[i-1] + 2 * jacobsthal[i-2];
@@ -71,16 +71,10 @@ struct ComparePairSecond {
 
 TEMPLATE
 void fordJohnsonSort(T& container) {
-    if (container.size() <= 1)
-        return;
 
-    bool hasOdd = false;
-    typename T::value_type oddElement;
-    if (container.size() % 2 != 0) {
-        hasOdd = true;
-        oddElement = container.back();
-        container.pop_back();
-    }
+    int oddNumber = -1;
+    if (container.size() % 2 != 0)
+        oddNumber = container.back();
 
     std::vector<std::pair<typename T::value_type, typename T::value_type> > pairs;
     for (size_t i = 0; i < container.size(); i += 2) {
@@ -116,9 +110,9 @@ void fordJohnsonSort(T& container) {
         }
     }
 
-    if (hasOdd) {
-        typename T::iterator it = std::lower_bound(mainChain.begin(), mainChain.end(), oddElement);
-        mainChain.insert(it, oddElement);
+    if (oddNumber != -1) {
+        typename T::iterator it = std::lower_bound(mainChain.begin(), mainChain.end(), oddNumber);
+        mainChain.insert(it, oddNumber);
     }
 
     container = mainChain;
@@ -127,33 +121,17 @@ void fordJohnsonSort(T& container) {
 TEMPLATE
 void make_pairs(T& list) {
 
-    std::vector<int> vecList(list.begin(), list.end());
-    clock_t vecStart = clock();
-    std::cout << "Avant tri: ";
-    for (size_t i = 0; i < vecList.size() && i < 10; ++i)
-        std::cout << vecList[i] << " ";
-    if (vecList.size() > 10)
-        std::cout << "...";
+    std::cout << "Before sort: ";
+    for (size_t i = 0; i < list.size(); ++i)
+		std::cout << list[i] << " ";
+	std::cout << "\n" << std::endl;
+
+    fordJohnsonSort(list);
+
+	std::cout << "After sort with PmergeMe: ";
+    for (size_t i = 0; i < list.size(); ++i)
+        std::cout << list[i] << " ";
     std::cout << std::endl;
-
-    fordJohnsonSort(vecList);
-
-    clock_t vecEnd = clock();
-    double vecTime = static_cast<double>(vecEnd - vecStart) / CLOCKS_PER_SEC * 1000000;
-
-    std::deque<int> dequeList(list.begin(), list.end());
-    clock_t dequeStart = clock();
-    fordJohnsonSort(dequeList);
-    clock_t dequeEnd = clock();
-    double dequeTime = static_cast<double>(dequeEnd - dequeStart) / CLOCKS_PER_SEC * 1000000;
-
-    std::cout << "Après tri avec PmergeMe: ";
-    for (size_t i = 0; i < vecList.size(); ++i)
-        std::cout << vecList[i] << " ";
-    std::cout << std::endl;
-
-    std::cout << "Temps pour std::vector: " << vecTime << " us" << std::endl;
-    std::cout << "Temps pour std::deque : " << dequeTime << " us" << std::endl;
 }
 
 #endif
