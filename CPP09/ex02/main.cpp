@@ -38,7 +38,10 @@ int	main (int argc, char **argv){
 		}
 
 	}
+	std::cout << "____________________________VECTOR______________________________\n";
 	make_pairs(jacob);
+	std::cout << "____________________________DEQUEU______________________________\n";
 	make_pairs(jacob2);
+
 	return 0;
 }
