@@ -12,7 +12,7 @@ int main()
 		std::cout << "Array 0: " << strings[0] << "\n";
 
 		const Array<std::string> copy(strings);
-		copy[1] = "C++";
+		// copy[1] = "C++";
 		std::cout << "Original: " << strings << "\n";
 		std::cout << "Copy: " << copy << "\n";
 

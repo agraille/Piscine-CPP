@@ -4,50 +4,54 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-template <typename T>
-class Array
-{
-public:
-	Array(): _data(NULL), _size(0) {};
-	Array(unsigned int n): _data(new T[n]), _size(n) {};
-	Array(const Array &src) : _data(NULL), _size(0) {*this = src;};
-	~Array() {delete[] _data;};
 
-	Array &operator=(const Array &src)
-	{
-		if (this != &src)
-		{
-			 if (_data != NULL)
-			 	delete[] _data;
-			_size = src._size;
-			_data = new T[src._size];
-			for (unsigned int i = 0; i < _size; i++)
-				_data[i] = src._data[i];
+#define TEMPLATE template <typename T>
+
+TEMPLATE
+class	Array{
+	public:
+		Array() : _n(0), _type(new T[0]) {}
+		Array(unsigned int n) : _n(n), _type(new T[n]){}
+		Array(Array<T> const& copy) : _n(copy._n){
+			_type = new T[_n];
+			for (unsigned int i = 0; i < _n; ++i)
+				_type[i] = copy._type[i];
 		}
-		return (*this);
-	}
+		~Array(){delete[] _type;}
 
-	T &operator[](unsigned int i)
-	{
-		if (i >= _size)
-			throw std::out_of_range("Index out of range");
-		return _data[i];
-	}
+		Array&	operator=(const Array& other) {
+			if (this != &other) {
+				delete[] _type;
+				_n = other._n;
+				_type = new T[_n];
+				for (unsigned int i = 0; i < _n; ++i)
+					_type[i] = other._type[i];
+			}
+			return *this;
+		}
 
-	const T &operator[](unsigned int i) const
-	{
-		if (i >= _size)
-			throw std::out_of_range("Index out of range");
-		return _data[i];
-	}
-	unsigned int size() const {return _size;};
+		T& operator[](int i) {
+			if (i < 0 || static_cast<unsigned int>(i) >= _n)
+				throw std::out_of_range("Index out of range");
+			return _type[i];
+		}
 
-private:
-	T				*_data;
-	unsigned int	_size;
+		const T& operator[](int i) const {
+			if (i < 0 || static_cast<unsigned int>(i) >= _n)
+				throw std::out_of_range("Index out of range");
+			return _type[i];
+		}
+
+		unsigned int size() const {
+			return _n;
+		}
+
+	private:
+		unsigned int	_n;
+		T				*_type;
 };
 
-template<typename T>
+TEMPLATE
 std::ostream& operator<<(std::ostream& o, const Array<T>& array){
 	for (unsigned int i = 0; i < array.size(); ++i)
 		o << array[i] << " ";
