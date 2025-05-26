@@ -8,6 +8,7 @@
 #include <sstream>
 #include <exception>
 #include <sys/time.h>
+#include <array> 
 
 #define TEMPLATE template <typename T>
 
