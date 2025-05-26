@@ -11,7 +11,7 @@ int main()
 		std::cout << "Array size: " << strings.size() << "\n";
 		std::cout << "Array 0: " << strings[0] << "\n";
 
-		Array<std::string> copy(strings);
+		const Array<std::string> copy(strings);
 		copy[1] = "C++";
 		std::cout << "Original: " << strings << "\n";
 		std::cout << "Copy: " << copy << "\n";
@@ -26,10 +26,9 @@ int main()
 	}
 	catch (const std::bad_alloc& e){
 		std::cout << e.what() << std::endl;
-		std::cout << "JE SUIS LA\n";
 	}
 	catch (const std::exception& e) {
-			std::cerr << "Exception: " << e.what() << std::endl;
+			std::cout << "Exception: " << e.what() << std::endl;
 	}
 }
 
