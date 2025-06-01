@@ -25,7 +25,6 @@ static bool	calc_sign(std::stack<int>& pile, char sign){
 		temp2 *= temp;
 	pile.push(temp2);
 	return true;
-	// std::cout << "TOP PILE = " << pile.top() << std::endl;
 }
 
 bool	parse_arg(const std::string& arg){
@@ -53,7 +52,7 @@ bool	parse_arg(const std::string& arg){
 			is_space = 1;
 			++count_numbers;
 		}
-		else if (is_space == 0 && (arg[i] == '+' || arg[i] == '-' \
+		else if (pile.size() >= 2 && is_space == 0 && (arg[i] == '+' || arg[i] == '-' \
 				|| arg[i] == '/' || arg[i] == '*')){
 			is_space = 1;
 			++count_sign;
