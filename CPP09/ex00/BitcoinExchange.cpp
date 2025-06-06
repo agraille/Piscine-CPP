@@ -17,7 +17,9 @@ static bool	check_date(STRING_CR line_read){
 	short 			day = stringToInt(line_read.substr(8, 2));
 	if ((years < 2009 || years > 2025) || (month < 1 || month > 12) || (day < 1 || day > 31))
 		return false;
-	if ((day > 28 && month == 2) || (day > 30 && (month == 4 || month == 6 || month == 9 || month == 11)))
+	if ((day > 28 && month == 2 && !(years % 4 == 0 && (years % 100 != 0 || years % 400 == 0))) ||
+		(day > 29 && month == 2) ||
+		(day > 30 && (month == 4 || month == 6 || month == 9 || month == 11)))
 		return false;
 	return true;
 }

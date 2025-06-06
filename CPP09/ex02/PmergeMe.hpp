@@ -1,6 +1,3 @@
-#ifndef PMERGEME_HPP
-#define PMERGEME_HPP
-
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -8,7 +5,6 @@
 #include <sstream>
 #include <exception>
 #include <sys/time.h>
-#include <array> 
 
 #define TEMPLATE template <typename T>
 
@@ -46,11 +42,34 @@ T generateJacobsthalSuite(int limit, T& container) {
 }
 
 TEMPLATE
-struct ComparePairSecond {
-    bool operator()(const std::pair<T, T>& a, const std::pair<T, T>& b) const {
-        return a.second < b.second;
+std::vector<std::pair<T, T> > mergeSortPairs(std::vector<std::pair<T, T> >& pairs) {
+    if (pairs.size() <= 1)
+        return pairs;
+
+    size_t mid = pairs.size() / 2;
+    std::vector<std::pair<T, T> > left(pairs.begin(), pairs.begin() + mid);
+    std::vector<std::pair<T, T> > right(pairs.begin() + mid, pairs.end());
+
+    left = mergeSortPairs<T>(left);
+    right = mergeSortPairs<T>(right);
+
+    std::vector<std::pair<T, T> > result;
+    size_t i = 0, j = 0;
+
+    while (i < left.size() && j < right.size()) {
+        if (left[i].second < right[j].second)
+            result.push_back(left[i++]);
+        else
+            result.push_back(right[j++]);
     }
-};
+
+    while (i < left.size())
+        result.push_back(left[i++]);
+    while (j < right.size())
+        result.push_back(right[j++]);
+
+    return result;
+}
 
 TEMPLATE
 void fordJohnsonSort(T& container) {
@@ -73,7 +92,7 @@ void fordJohnsonSort(T& container) {
             pairs.push_back(std::make_pair(b, a));
     }
 
-    std::sort(pairs.begin(), pairs.end(), ComparePairSecond<typename T::value_type>());
+	pairs = mergeSortPairs<typename T::value_type>(pairs);
 
     T maxlist;
     T minlist;
@@ -126,5 +145,3 @@ void make_pairs(T& list) {
     double elapsed = seconds * 1000.0 + microseconds / 1000.0;
 	std::cout << "Time for sort : " << elapsed << " ms" << std::endl;
 }
-
-#endif
