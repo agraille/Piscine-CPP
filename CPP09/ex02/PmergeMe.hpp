@@ -8,6 +8,8 @@
 
 #define TEMPLATE template <typename T>
 
+void run_deque(std::deque<int>& list);
+
 TEMPLATE
 T generateJacobsthalSuite(int limit, T& container) {
     T jacobsthal;
@@ -123,7 +125,7 @@ void fordJohnsonSort(T& container) {
 }
 
 TEMPLATE
-void make_pairs(T& list) {
+void run_vector(T& list) {
 	timeval start, end;
 
     std::cout << "Before sort: \n";
