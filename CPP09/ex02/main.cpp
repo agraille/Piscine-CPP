@@ -19,21 +19,21 @@ static int	str_to_int(const std::string& str){
 
 int	main (int argc, char **argv){
 	if (argc < 3){
-		std::cout << "Error: add more arguments\n";
+		std::cerr<< "Error: add more arguments\n";
 		return 1;
 	}
 	std::vector<int> jacob;
 	std::deque<int>	 jacob2;
 	for (int i = 1; argv[i]; ++i){
 		if (!check_arg(argv[i])){
-			std::cout << "Invalid value: " << argv[i] << std::endl;
+			std::cerr << "Invalid value: " << argv[i] << std::endl;
 			return 2;
 		}
 		try{
 			jacob.push_back(str_to_int(argv[i]));
 			jacob2.push_back(str_to_int(argv[i]));
 		}catch (const std::exception& e){
-			std::cout << e.what() << argv[i] << std::endl;
+			std::cerr << e.what() << argv[i] << std::endl;
 			return 1;
 		}
 

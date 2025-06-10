@@ -15,7 +15,7 @@ static bool	check_date(STRING_CR line_read){
 	short 			years = stringToInt(line_read.substr(0, 4));
 	short 			month = stringToInt(line_read.substr(5, 2));
 	short 			day = stringToInt(line_read.substr(8, 2));
-	if ((years < 2009 || years > 2025) || (month < 1 || month > 12) || (day < 1 || day > 31))
+	if ((years < 2009) || (month < 1 || month > 12) || (day < 1 || day > 31))
 		return false;
 	if ((day > 28 && month == 2 && !(years % 4 == 0 && (years % 100 != 0 || years % 400 == 0))) ||
 		(day > 29 && month == 2) ||
@@ -69,11 +69,11 @@ static void	check_base(std::map<int, std::string>& dataBase, STRING_CR line_read
 	std::cout << date_str << " => " << value << " = " << result << "\n";
 }
 
-static void	check_infile(std::map<int, std::string>& dataBase, std::string input){
+static bool	check_infile(std::map<int, std::string>& dataBase, std::string input){
 	std::ifstream	infile(input.c_str());
 	if (!infile.is_open()){
 		std::cout << "Cannot open "<< input << "\n";
-		std::exit(1);
+		return false;
 	}
 	std::string	line_read;
 	while(getline(infile, line_read)){
@@ -100,6 +100,7 @@ static void	check_infile(std::map<int, std::string>& dataBase, std::string input
 		check_base(dataBase, line_read, value);
 	}
 	infile.close();
+	return true;
 }
 
 bool	addDataToMap(std::ifstream& data, STRING_CR input){
@@ -119,6 +120,7 @@ bool	addDataToMap(std::ifstream& data, STRING_CR input){
 		dataBase.insert(std::make_pair(key, line_read.substr(9)));
 	}
 	data.close();
-	check_infile(dataBase, input);
+	if (!check_infile(dataBase, input))
+		return false;
 	return true;
 }

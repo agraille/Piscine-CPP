@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <climits>
 
 bool	parse_arg(const std::string& arg);
 

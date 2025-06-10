@@ -5,14 +5,47 @@ static bool	check_sign(char c){
 	return sign.find(c) != std::string::npos;
 }
 
+static bool test_over_under_flow(int v1, int v2, char sign){
+	long int	result;
+
+
+	if (sign == '-'){
+		result = v2;
+		result -= v1;
+		if (result < INT_MIN || result > INT_MAX)
+			return false;
+	}
+	else if (sign == '+'){
+		result = v2;
+		result += v1;
+		if (result < INT_MIN || result > INT_MAX)
+			return false;
+	}
+	else if (sign == '*'){
+		result = v2;
+		result *= v1;
+		if (result < INT_MIN || result > INT_MAX)
+			return false;
+	}
+	else if (sign == '/'){
+		result = v2;
+		result /= v1;
+		if (result < INT_MIN || result > INT_MAX)
+			return false;
+	}
+	return true;
+}
+
 static bool	calc_sign(std::stack<int>& pile, char sign){
 	int temp = pile.top();
 	pile.pop();
 	int temp2 = pile.top();
 	pile.pop();
+	if (!test_over_under_flow(temp,temp2,sign))
+		return false;
 	if (sign == '/'){
 		if (temp == 0){
-			std::cout << "Why you try to break my program :( ?\n";
+			std::cerr << "Why you try to break my program :( ?\n";
 			return false;
 		}
 		temp2 /= temp;
